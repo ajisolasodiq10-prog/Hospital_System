@@ -79,7 +79,7 @@ app.use("/api/doctors",     doctorRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/admin",       adminRoutes);
 
-
+// Temporary comment to force Git to detect change
 // Health check — a simple route to test if the server is running
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname,
