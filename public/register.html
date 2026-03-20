@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — MediBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-page">
+
+  <div class="auth-card">
+
+    <!-- Logo -->
+    <div class="auth-logo">
+      <span class="logo-icon">🏥</span>
+      <span class="logo-text">MediBook</span>
+    </div>
+
+    <h1 class="auth-title">Create your account</h1>
+    <p class="auth-sub">Already have an account? <a href="login.html">Sign in</a></p>
+
+    <!-- Registration Form -->
+    <!-- All form logic is in js/registerPatient.js — no JS here -->
+    <form id="registerForm" novalidate>
+
+      <div class="field">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Jane Smith" />
+        <span class="field-error" id="nameError"></span>
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="jane@example.com" />
+        <span class="field-error" id="emailError"></span>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" placeholder="5551234567 (digits only)" />
+        <span class="field-error" id="phoneError"></span>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="At least 6 characters" />
+        <span class="field-error" id="passwordError"></span>
+      </div>
+
+      <!-- This message area shows success or error after submission -->
+      <div id="formMessage" class="form-message hidden"></div>
+
+      <button type="submit" id="submitBtn" class="btn btn-primary">
+        Create Account
+      </button>
+
+    </form>
+
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/registerPatient.js"></script>
+</body>
+</html>

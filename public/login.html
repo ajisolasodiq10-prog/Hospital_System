@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — MediBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-page">
+
+  <div class="auth-card">
+
+    <div class="auth-logo">
+      <span class="logo-icon">🏥</span>
+      <span class="logo-text">MediBook</span>
+    </div>
+
+    <h1 class="auth-title">Welcome back</h1>
+    <p class="auth-sub">No account yet? <a href="register.html">Create one</a></p>
+
+    <!-- Login Form -->
+    <!-- All logic is in js/login.js -->
+    <form id="loginForm" novalidate>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="jane@example.com" />
+        <span class="field-error" id="emailError"></span>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Your password" />
+        <span class="field-error" id="passwordError"></span>
+      </div>
+
+      <div id="formMessage" class="form-message hidden"></div>
+
+      <button type="submit" id="submitBtn" class="btn btn-primary">
+        Sign In
+      </button>
+
+    </form>
+
+    <!-- Shortcut link for the reception/admin dashboard -->
+    <div class="auth-divider">
+      <span>or</span>
+    </div>
+    <a href="reception.html" class="btn btn-outline">
+      🏢 Go to Reception Dashboard
+    </a>
+
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

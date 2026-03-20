@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Dashboard — MediBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- ── Top navigation bar ── -->
+  <header class="topnav">
+    <div class="topnav-brand">
+      <span class="logo-icon">🏥</span>
+      <span class="logo-text">MediBook</span>
+    </div>
+    <div class="topnav-right">
+      <!-- "Welcome, Jane" — filled in by dashboard.js -->
+      <span id="welcomeMsg">Welcome…</span>
+      <button id="logoutBtn" class="btn btn-sm btn-outline">Logout</button>
+    </div>
+  </header>
+
+  <!-- ── Page content ── -->
+  <main class="dashboard-content">
+
+    <!-- ══════════════════════════════════════
+         SECTION 1: Book an Appointment
+    ══════════════════════════════════════ -->
+    <section class="card">
+      <h2 class="card-title">📅 Book an Appointment</h2>
+
+      <!-- All the booking logic is in dashboard.js -->
+      <form id="bookingForm" novalidate>
+
+        <div class="form-row">
+          <!-- Doctor dropdown — options loaded by dashboard.js -->
+          <div class="field">
+            <label for="doctorSelect">Choose a Doctor</label>
+            <select id="doctorSelect">
+              <option value="">Loading doctors…</option>
+            </select>
+            <span class="field-error" id="doctorError"></span>
+          </div>
+
+          <!-- Date picker — min date is set to today by dashboard.js -->
+          <div class="field">
+            <label for="dateInput">Appointment Date</label>
+            <input type="date" id="dateInput" />
+            <span class="field-error" id="dateError"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Time slot dropdown -->
+          <div class="field">
+            <label for="timeSlot">Time Slot</label>
+            <select id="timeSlot">
+              <option value="">Choose a time</option>
+              <option value="09:00">09:00 AM</option>
+              <option value="09:30">09:30 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="10:30">10:30 AM</option>
+              <option value="11:00">11:00 AM</option>
+              <option value="11:30">11:30 AM</option>
+              <option value="14:00">02:00 PM</option>
+              <option value="14:30">02:30 PM</option>
+              <option value="15:00">03:00 PM</option>
+            </select>
+            <span class="field-error" id="slotError"></span>
+          </div>
+        </div>
+
+        <!-- Reason textarea -->
+        <div class="field">
+          <label for="reason">Reason for Visit</label>
+          <textarea id="reason" rows="3" placeholder="Describe your symptoms or reason…"></textarea>
+          <span class="field-error" id="reasonError"></span>
+        </div>
+
+        <!-- Success/error message shown after submitting -->
+        <div id="bookingMessage" class="form-message hidden"></div>
+
+        <button type="submit" id="bookBtn" class="btn btn-primary">
+          Book Appointment
+        </button>
+
+      </form>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 2: Upcoming Appointments
+    ══════════════════════════════════════ -->
+    <section class="card">
+      <h2 class="card-title">🗓️ Upcoming Appointments</h2>
+
+      <!-- This table is filled in by dashboard.js -->
+      <div class="table-wrap">
+        <table id="upcomingTable">
+          <thead>
+            <tr>
+              <th>Doctor</th>
+              <th>Specialization</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Reason</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="upcomingBody">
+            <!-- Rows injected by dashboard.js -->
+            <tr><td colspan="7" class="table-loading">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 3: Past Appointments
+    ══════════════════════════════════════ -->
+    <section class="card">
+      <h2 class="card-title">📋 Past Appointments</h2>
+
+      <div class="table-wrap">
+        <table id="pastTable">
+          <thead>
+            <tr>
+              <th>Doctor</th>
+              <th>Specialization</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Reason</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="pastBody">
+            <tr><td colspan="6" class="table-loading">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

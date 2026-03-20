@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reception Dashboard — MediBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="dashboard-page">
+
+  <!-- ── Top navigation bar ── -->
+  <header class="topnav topnav-admin">
+    <div class="topnav-brand">
+      <span class="logo-icon">🏢</span>
+      <span class="logo-text">MediBook <span class="admin-badge">Reception</span></span>
+    </div>
+    <div class="topnav-right">
+      <span id="welcomeMsg">Admin</span>
+      <button id="logoutBtn" class="btn btn-sm btn-outline">Logout</button>
+    </div>
+  </header>
+
+  <!-- ── Tab navigation ── -->
+  <!-- Clicking these buttons shows/hides the sections below -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="doctors">👨‍⚕️ Doctors</button>
+    <button class="tab-btn"        data-tab="appointments">📋 All Appointments</button>
+  </nav>
+
+  <main class="dashboard-content">
+
+    <!-- ══════════════════════════════════════
+         TAB 1: Doctor Management
+    ══════════════════════════════════════ -->
+    <div id="tab-doctors" class="tab-panel active">
+
+      <!-- Add Doctor Form -->
+      <section class="card">
+        <h2 class="card-title">Add New Doctor</h2>
+
+        <!-- All logic is in reception.js -->
+        <form id="addDoctorForm" novalidate>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="docName">Full Name</label>
+              <input type="text" id="docName" placeholder="Dr. Jane Smith" />
+              <span class="field-error" id="docNameError"></span>
+            </div>
+
+            <div class="field">
+              <label for="docSpecialization">Specialization</label>
+              <select id="docSpecialization">
+                <option value="">— Choose —</option>
+                <option value="Dentist">Dentist</option>
+                <option value="Surgeon">Surgeon</option>
+                <option value="Cardiologist">Cardiologist</option>
+                <option value="Dermatologist">Dermatologist</option>
+                <option value="General Physician">General Physician</option>
+              </select>
+              <span class="field-error" id="docSpecError"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="docEmail">Email</label>
+              <input type="email" id="docEmail" placeholder="doctor@hospital.com" />
+              <span class="field-error" id="docEmailError"></span>
+            </div>
+
+            <!-- Available days — checkboxes are clearest for beginners -->
+            <div class="field">
+              <label>Available Days</label>
+              <div class="checkbox-group" id="daysCheckboxes">
+                <label class="checkbox-label"><input type="checkbox" value="Monday" />    Monday</label>
+                <label class="checkbox-label"><input type="checkbox" value="Tuesday" />   Tuesday</label>
+                <label class="checkbox-label"><input type="checkbox" value="Wednesday" /> Wednesday</label>
+                <label class="checkbox-label"><input type="checkbox" value="Thursday" />  Thursday</label>
+                <label class="checkbox-label"><input type="checkbox" value="Friday" />    Friday</label>
+                <label class="checkbox-label"><input type="checkbox" value="Saturday" />  Saturday</label>
+                <label class="checkbox-label"><input type="checkbox" value="Sunday" />    Sunday</label>
+              </div>
+              <span class="field-error" id="docDaysError"></span>
+            </div>
+          </div>
+
+          <div id="addDoctorMessage" class="form-message hidden"></div>
+
+          <button type="submit" id="addDoctorBtn" class="btn btn-primary">
+            Add Doctor
+          </button>
+
+        </form>
+      </section>
+
+      <!-- Doctor List Table -->
+      <section class="card">
+        <h2 class="card-title">All Doctors</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Specialization</th>
+                <th>Available Days</th>
+                <th>Email</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="doctorTableBody">
+              <tr><td colspan="5" class="table-loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /tab-doctors -->
+
+
+    <!-- ══════════════════════════════════════
+         TAB 2: All Appointments
+    ══════════════════════════════════════ -->
+    <div id="tab-appointments" class="tab-panel hidden">
+
+      <section class="card">
+        <div class="card-header-row">
+          <h2 class="card-title">All Appointments</h2>
+          <!-- Filter dropdown -->
+          <div class="filter-row">
+            <label for="statusFilter">Filter by status:</label>
+            <select id="statusFilter">
+              <option value="">All</option>
+              <option value="scheduled">Scheduled</option>
+              <option value="completed">Completed</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="no-show">No-show</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient</th>
+                <th>Doctor</th>
+                <th>Specialization</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Update Status</th>
+              </tr>
+            </thead>
+            <tbody id="apptTableBody">
+              <tr><td colspan="8" class="table-loading">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div><!-- /tab-appointments -->
+
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/reception.js"></script>
+</body>
+</html>
