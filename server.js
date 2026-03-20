@@ -81,8 +81,10 @@ app.use("/api/admin",       adminRoutes);
 
 
 // Health check — a simple route to test if the server is running
-app.get("/api/health", (req, res) => {
-  res.json({ status: "Server is running!" });
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname,
+   "public", "dashboard.html")
+  );
 });
 
 
